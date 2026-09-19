@@ -1,0 +1,19 @@
+{
+  "schema_version": "colleague_v1",
+  "fallback": "hash_by_type",
+  "notes": "Keys must match IoMT CSV stems (client_id). Values must exist in medical_device_profiles.device_identifier.",
+  "participant_to_device_identifier": {
+    "hospital_01_high_quality_iomt": "MD-ICU-001",
+    "hospital_02_high_quality_iomt": "MD-ICU-002",
+    "hospital_03_high_quality_iomt": "MD-ICU-003",
+    "hospital_04_medium_quality_iomt": "MD-RAD-001",
+    "hospital_05_medium_quality_iomt": "MD-RAD-002",
+    "hospital_06_medium_quality_iomt": "MD-LAB-001",
+    "hospital_07_low_quality_iomt": "MD-PHM-001",
+    "hospital_08_low_quality_iomt": "WS-NURSE-014",
+    "hospital_09_compromised_iomt": "WS-DOCTOR-011",
+    "hospital_10_compromised_iomt": "WS-ADMIN-022",
+    "hospital_11_high_quality_iomt": "SRV-EHR-001",
+    "hospital_12_medium_quality_iomt": "SRV-PACS-001"
+  }
+}

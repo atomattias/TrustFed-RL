@@ -1,0 +1,36 @@
+{
+  "dataset": {
+    "iomt_dir": "data/CSVs/iomt_clients",
+    "iomt_test_csv": "data/CSVs/iomt_test_set.csv",
+    "iomt_raw_train": "data/train",
+    "iomt_raw_test": "data/test",
+    "iomt_natural_dir": "data/CSVs/iomt_natural/clients",
+    "iomt_natural_test_csv": "data/CSVs/iomt_natural/iomt_test_set.csv",
+    "iomt_natural_val_ref": "data/CSVs/iomt_natural/iomt_val_ref.csv",
+    "wustl_ehms_dir": "data/CSVs/wustl_ehms_clients",
+    "wustl_ehms_test_csv": "data/CSVs/wustl_ehms_test_set.csv",
+    "wustl_ehms_raw": "data/wustl-ehms-2020_with_attacks_categories.csv",
+    "test_csv": null
+  },
+  "model": {
+    "type": "logistic_regression",
+    "num_rounds": 30
+  },
+  "seeds": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53],
+  "wustl_ehms_seeds": [42, 43, 44],
+  "approaches": {
+    "B0": { "script": "run_experiments.py", "args": ["regression", "--baseline", "fedavg"] },
+    "B1": { "script": "run_experiments.py", "args": ["regression", "--baseline", "b1"] },
+    "B3": { "script": "trustfed_agent_runner.py", "args": ["--approach", "trustfed_governance"] },
+    "B4": { "script": "trustfed_agent_runner.py", "args": ["--approach", "trustfed_rl_only"] },
+    "B5_no_cr": { "script": "trustfed_agent_runner.py", "args": ["--approach", "trustfed_agent", "--no-cr-signals"] },
+    "B5": { "script": "trustfed_agent_runner.py", "args": ["--approach", "trustfed_agent"] },
+    "B5_co_adaptive": { "script": "trustfed_agent_runner.py", "args": ["--approach", "trustfed_agent", "--adversary", "co_adaptive"] },
+    "B4_co_adaptive": { "script": "trustfed_agent_runner.py", "args": ["--approach", "trustfed_rl_only", "--adversary", "co_adaptive"] }
+  },
+  "output": {
+    "metrics_dir": "results/trustfed_agent/metrics",
+    "audit_dir": "results/trustfed_agent/audit",
+    "logs_dir": "results/trustfed_agent/logs"
+  }
+}

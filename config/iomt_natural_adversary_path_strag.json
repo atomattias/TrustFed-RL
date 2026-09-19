@@ -1,0 +1,44 @@
+{
+  "enabled": true,
+  "compromise_round": 20,
+  "poison_mode": "comm_skip",
+  "flip_p": 0.8,
+  "attacker_client_ids": null,
+  "adversary_fraction": 0.25,
+  "on_off_attack_rounds": 5,
+  "on_off_period": 0,
+  "sign_flip_scale": -1.0,
+  "status": "t1_0_frozen_defaults_v2",
+  "frozen_at_utc": "2026-09-11T10:55:00Z",
+  "parent_hard_config": "config/iomt_natural_adversary_hard.json",
+  "do_not_edit_parent": true,
+  "benign_straggler": {
+    "enabled": true,
+    "n_stragglers": 3,
+    "selection": "last_non_attackers_sorted",
+    "skip_prob_q": 0.5,
+    "apply_from_round": "compromise_round",
+    "apply_note": "Independent Bernoulli skip for each (straggler, round) with round >= t_a. Attackers are never selected as stragglers; their always-skip under comm_skip is unchanged.",
+    "rng": {
+      "salt": "path_strag_benign",
+      "formula": "numpy_default_rng(seed=SHA256(f'{run_seed}|{salt}|{client_id}|{round}')[:8] as uint64 % (2**31-1)); skip if rng.random() < q"
+    },
+    "n12_f025_resolved": {
+      "attackers": ["client_01", "client_06", "client_12"],
+      "stragglers": ["client_09", "client_10", "client_11"],
+      "note": "Resolved by LateCompromise resolve_attacker_ids(fraction=0.25) then last 3 sorted non-attackers. Authoritative at runtime; listed here for T1.0 audit only."
+    },
+    "retune": {
+      "seed": 42,
+      "max_attempts": 1,
+      "q_candidates_if_needed": [0.3, 0.7],
+      "trigger": "G1 fail OR all of {B1,Bc,B2} AUROC >= 0.99 on explore"
+    }
+  },
+  "eval": {
+    "auroc_positive_class": "malicious_attackers_only",
+    "stragglers_are_benign_for_gt": true,
+    "primary_metric": "post_ta_trust_auroc"
+  },
+  "freeze_note": "T1.0 v2 + T1.2 explore (2026-09-11 seed 42): q=0.5 FROZEN. Explore AUROC B1=0.556, Bc=1.0, B2=1.0 (G1 pass; G2b null candidate B2≈Bc). Retune not triggered (G1 ok; not all arms ≥0.99). Confirmatory seeds 43–47 only at q=0.5. Do not edit iomt_natural_adversary_hard.json."
+}

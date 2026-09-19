@@ -1,0 +1,16 @@
+{
+  "schema_version": "colleague_v1",
+  "detection_to_device_type": {
+    "infusion_pump": "INFUSION_PUMP",
+    "vitals_monitor": "PATIENT_MONITOR",
+    "patient_monitor": "PATIENT_MONITOR",
+    "ecg": "PATIENT_MONITOR",
+    "imaging": "IMAGING_DEVICE",
+    "gateway": "APPLICATION_SERVER",
+    "mqtt_broker": "APPLICATION_SERVER",
+    "printer": "NETWORK_PRINTER",
+    "wearable": "IOT_CAMERA",
+    "bluetooth_sensor": "IOT_CAMERA"
+  },
+  "notes": "WP1 stub — used by WP2 device binding. Multiple profiles per type resolved by hash(participant_id)."
+}

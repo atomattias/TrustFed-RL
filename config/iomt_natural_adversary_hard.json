@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "compromise_round": 20,
+  "poison_mode": "comm_skip",
+  "flip_p": 0.8,
+  "attacker_client_ids": null,
+  "adversary_fraction": 0.25,
+  "on_off_attack_rounds": 5,
+  "on_off_period": 0,
+  "sign_flip_scale": -1.0,
+  "status": "frozen_primary_hard_attack",
+  "frozen_at_utc": "2026-08-24T18:15:00Z",
+  "exploration_seed": 42,
+  "exploration_preview": {
+    "b1_auroc": 0.5555555555555556,
+    "b2_auroc": 1.0,
+    "delta": 0.4444444444444444
+  },
+  "note": "Frozen after WP-A A3 exploration pass on seed 42. Do not retune using confirmatory seeds 43-47. A1 sign_flip rejected (Δ=0)."
+}

@@ -1,0 +1,12 @@
+{
+  "agent": {
+    "validation_batch_size": 500,
+    "response_evaluation_split": "validation",
+    "description": "AutonomousAgent uses validation batch for detection + response simulation per round"
+  },
+  "trust_tiers": {
+    "high_threshold": 0.60,
+    "medium_threshold": 0.30,
+    "description": "Trust tiers for governance response caps"
+  }
+}

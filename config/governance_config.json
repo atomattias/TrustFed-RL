@@ -1,0 +1,51 @@
+{
+  "aggregation": {
+    "min_trust_threshold": 0.1,
+    "max_client_weight": 0.4,
+    "min_participating_clients": 3,
+    "quorum_fraction": 0.5,
+    "trust_exponent_beta": 0.8
+  },
+  "response": {
+    "allowed_actions": [
+      "monitor",
+      "alert",
+      "throttle",
+      "isolate",
+      "block",
+      "escalate"
+    ],
+    "min_confidence_for_block": 0.75,
+    "min_confidence_for_isolate": 0.85,
+    "max_severity_without_escalation": 0.6,
+    "rate_limit_per_round": 15,
+    "require_escalation_above_severity": 0.85
+  },
+  "trust_tier_policies": {
+    "high": {
+      "min_trust": 0.60,
+      "allowed_actions": [
+        "monitor", "alert", "throttle", "isolate", "block", "escalate"
+      ],
+      "max_severity": 1.0
+    },
+    "medium": {
+      "min_trust": 0.30,
+      "allowed_actions": [
+        "monitor", "alert", "throttle", "block", "escalate"
+      ],
+      "max_severity": 0.6
+    },
+    "low": {
+      "min_trust": 0.0,
+      "allowed_actions": ["monitor", "alert", "escalate"],
+      "max_severity": 0.2
+    }
+  },
+  "compliance": {
+    "audit_log_dir": "results/trustfed_agent/audit",
+    "retain_rounds": 100,
+    "alert_on_trust_drop_threshold": 0.2,
+    "response_fidelity_window": 10
+  }
+}

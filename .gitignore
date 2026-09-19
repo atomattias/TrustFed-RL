@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+.venv*/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Experiment outputs (keep stubs)
+results/trustfed_agent/metrics/*
+!results/trustfed_agent/metrics/.gitkeep
+results/trustfed_agent/audit/*
+!results/trustfed_agent/audit/.gitkeep
+results/trustfed_agent/logs/
+results/trustfed_agent/rl_checkpoints/
+results/**/*.log
+results/**/*.json
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+.ipynb_checkpoints/
+
+# Secrets / local env
+.env
+.env.*
+
+# Datasets (never commit)
+data/train/
+data/test/
+data/CSVs/
+data/**/*.csv
+data/**/*.parquet
+*.zip

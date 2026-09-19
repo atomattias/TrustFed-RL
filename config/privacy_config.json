@@ -1,0 +1,12 @@
+{
+  "strong_v1": {
+    "local_batch_size": 1000,
+    "clip_norm": 1.0,
+    "noise_multiplier": 0.0,
+    "delta": 1e-5,
+    "learning_rate": 0.05,
+    "secure_aggregation": true,
+    "trust_beta": 0.8,
+    "description": "Strong v1: gradient sufficient statistics + simulated SA + optional DP noise. No row upload."
+  }
+}

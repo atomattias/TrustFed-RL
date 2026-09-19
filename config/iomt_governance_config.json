@@ -1,0 +1,95 @@
+{
+  "aggregation": {
+    "min_trust_threshold": 0.1,
+    "max_client_weight": 0.35,
+    "min_participating_clients": 3,
+    "quorum_fraction": 0.5,
+    "trust_exponent_beta": 1.0,
+    "note": "β=1 matches paper α_i ← T_i/∑T_j (Alg. 1). Prior β=0.8 was sub-linear and compressed trust gaps."
+  },
+  "response": {
+    "allowed_actions": [
+      "monitor",
+      "alert",
+      "throttle",
+      "isolate",
+      "block",
+      "escalate"
+    ],
+    "min_confidence_for_block": 0.80,
+    "min_confidence_for_isolate": 0.90,
+    "max_severity_without_escalation": 0.5,
+    "rate_limit_per_round": 15,
+    "require_escalation_above_severity": 0.85
+  },
+  "trust_tier_policies": {
+    "high": {
+      "min_trust": 0.60,
+      "allowed_actions": [
+        "monitor", "alert", "throttle", "isolate", "block", "escalate"
+      ],
+      "max_severity": 1.0
+    },
+    "medium": {
+      "min_trust": 0.30,
+      "allowed_actions": [
+        "monitor", "alert", "throttle", "block", "escalate"
+      ],
+      "max_severity": 0.5
+    },
+    "low": {
+      "min_trust": 0.0,
+      "allowed_actions": ["monitor", "alert", "escalate"],
+      "max_severity": 0.2
+    }
+  },
+  "device_criticality": {
+    "tier1_critical": {
+      "devices": ["infusion_pump", "vitals_monitor", "ecg", "patient_monitor"],
+      "blocked_actions": ["block", "isolate"],
+      "max_auto_severity": 0.4,
+      "require_escalation": true
+    },
+    "tier2_standard": {
+      "devices": ["imaging", "gateway", "mqtt_broker"],
+      "blocked_actions": ["isolate"],
+      "max_auto_severity": 0.7,
+      "require_escalation": false
+    },
+    "tier3_peripheral": {
+      "devices": ["wearable", "bluetooth_sensor", "printer"],
+      "blocked_actions": [],
+      "max_auto_severity": 1.0,
+      "require_escalation": false
+    }
+  },
+  "trust_calibration": {
+    "max_adjustment": 0.10,
+    "min_trust_floor": 0.05,
+    "max_trust_ceiling": 0.99
+  },
+  "compliance": {
+    "audit_log_dir": "results/trustfed_agent/audit/iomt",
+    "retain_rounds": 100,
+    "alert_on_trust_drop_threshold": 0.15,
+    "response_fidelity_window": 10,
+    "hipaa_audit_required": true
+  },
+  "policy_repository": {
+    "db_path": "results/trustfed_agent/governance/policy_repo_iomt.sqlite",
+    "engine": "sqlite",
+    "schema_version": "colleague_v1",
+    "seed_path": "data/governance/colleague_seed_v1.json",
+    "device_aliases_path": "config/governance_device_aliases.json",
+    "device_roster_path": "config/governance_device_roster.json",
+    "description": "Colleague-compatible Table VI schema (WP2 runtime evaluate/record enabled)"
+  },
+  "clinical_action_costs": {
+    "monitor": 0,
+    "alert": 1,
+    "throttle": 3,
+    "block": 15,
+    "isolate": 25,
+    "escalate": 2
+  }
+}

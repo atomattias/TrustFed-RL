@@ -1,0 +1,48 @@
+{
+  "algorithm": "ppo",
+  "use_action_masking": true,
+  "mdp": {
+    "state": ["T_i", "A_i", "C_i", "R_i"],
+    "actions": ["monitor", "alert", "throttle", "isolate", "block", "escalate"],
+    "trust_evolution_channel": "delta_tau"
+  },
+  "hyperparameters": {
+    "learning_rate": 0.0003,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "n_steps": 2048,
+    "batch_size": 64,
+    "n_epochs": 10,
+    "policy_hidden_layers": [128, 128]
+  },
+  "reward_weights": {
+    "w_tp": 10.0,
+    "w_fp": -15.0,
+    "w_fn": -20.0,
+    "w_cost": -1.0,
+    "w_viol": -50.0,
+    "w_trust": 5.0
+  },
+  "action_costs": {
+    "monitor": 0,
+    "alert": 1,
+    "throttle": 2,
+    "block": 5,
+    "isolate": 8,
+    "escalate": 2
+  },
+  "training": {
+    "episodes_per_round": 1,
+    "max_incidents_per_episode": 500,
+    "total_timesteps_per_round": 2048,
+    "replay_buffer_size": 2000,
+    "checkpoint_dir": "results/trustfed_agent/rl_checkpoints",
+    "convergence_reward_std_threshold": 0.05
+  },
+  "static_policy_baseline": {
+    "block_confidence_threshold": 0.9,
+    "block_trust_threshold": 0.6,
+    "alert_confidence_threshold": 0.75
+  }
+}

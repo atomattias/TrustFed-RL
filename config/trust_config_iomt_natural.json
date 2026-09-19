@@ -1,0 +1,48 @@
+{
+  "trust_manager": {
+    "alpha": 0.3,
+    "decay_rate": 0.95,
+    "anomaly_threshold": 0.2,
+    "initial_trust": 0.5,
+    "storage_dir": "results/trust_history",
+    "note": "EMA α=0.3 (was 0.5): more weight on current multi-signal evidence so T tracks post-t_a degradation; still Algorithm 1 EMA-smooth."
+  },
+  "multi_signal": {
+    "fusion": "weighted_sum",
+    "description": "Natural-partition TrustFed: Ti = f(V,S,D,U,C) only. R is environmental (RL/gov state), not fused into T. Equal weights (plan lock). Set include_R_in_T=true for B5-R ablation.",
+    "include_R_in_T": false,
+    "signal_weights": {
+      "V": 0.20,
+      "S": 0.20,
+      "D": 0.20,
+      "U": 0.20,
+      "C": 0.20,
+      "R": 0.0
+    },
+    "disable_signals": [],
+    "include_response_fidelity_in_R": true,
+    "performance_signal": "f1_score",
+    "performance_signal_iomt": "f1_score",
+    "response_fidelity_window": 10,
+    "legacy_lambda": {
+      "lambda1": 1.0,
+      "lambda2": 0.3,
+      "lambda3": 0.2,
+      "lambda4": 0.2,
+      "lambda5": 0.0,
+      "note": "λ5 unused when include_R_in_T=false; R stays in RL state only."
+    }
+  },
+  "consistency": {
+    "window_size": 5
+  },
+  "trend_analysis": {
+    "window_size": 5,
+    "improving_threshold": 0.01,
+    "declining_threshold": -0.01
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "results/trust_updates.log"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "trust_manager": {
+    "alpha": 0.3,
+    "decay_rate": 0.95,
+    "anomaly_threshold": 0.2,
+    "initial_trust": 0.5,
+    "storage_dir": "results/trust_history",
+    "note": "EMA α=0.3 matches natural behavioural config; B1 uses V only."
+  },
+  "multi_signal": {
+    "fusion": "weighted_sum",
+    "description": "Natural-partition B1 (Trusted-plan §13): T=V only. Shared D_val F1 is the sole behavioural evidence.",
+    "include_R_in_T": false,
+    "signal_weights": {
+      "V": 1.0,
+      "S": 0.0,
+      "D": 0.0,
+      "U": 0.0,
+      "C": 0.0,
+      "R": 0.0
+    },
+    "disable_signals": ["S", "D", "U", "C", "R"],
+    "include_response_fidelity_in_R": true,
+    "performance_signal": "f1_score",
+    "performance_signal_iomt": "f1_score",
+    "response_fidelity_window": 10
+  },
+  "consistency": {
+    "window_size": 5
+  },
+  "trend_analysis": {
+    "window_size": 5,
+    "improving_threshold": 0.01,
+    "declining_threshold": -0.01
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "results/trust_updates.log"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "compromise_round": 20,
+  "poison_mode": "label_flip",
+  "flip_p": 0.8,
+  "attacker_client_ids": [],
+  "adversary_fraction": 0.25,
+  "on_off_attack_rounds": 5,
+  "on_off_period": 0,
+  "sign_flip_scale": -1.0,
+  "frozen_M_star": "label_flip",
+  "freeze_note": "Seed-42 explore: sign_flip null on P1/P2 (alpha≈equal, F1≈equal). One retune to label_flip: B2 mean_alpha_mal 0.060 < B0 0.083 (delta≈0.024); F1 B2=B0≈0.982 ceiling; Rm F1≈0.888 (context). Confirmatory seeds 43-47 only under label_flip. Do not edit iomt_natural_adversary_hard.json.",
+  "explore_artifacts": [
+    "rev_sup/path_agg_explore_sign_flip_f0.25_seed42.json",
+    "rev_sup/path_agg_explore_label_flip_f0.25_seed42.json"
+  ]
+}

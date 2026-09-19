@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "compromise_round": 20,
+  "poison_mode": "label_flip",
+  "flip_p": 0.8,
+  "attacker_client_ids": ["client_03", "client_07", "client_11"],
+  "adversary_fraction": null,
+  "on_off_attack_rounds": 5,
+  "on_off_period": 0,
+  "sign_flip_scale": -1.0,
+  "note": "Label-flip p=0.8 (Byzantine strength; plan retry from 0.5 when V-gap weak). Attackers are runtime config only. WP7: set adversary_fraction (0.1-0.4) or poison_mode in {label_flip,sign_flip,on_off,label_flip_on_off}."
+}

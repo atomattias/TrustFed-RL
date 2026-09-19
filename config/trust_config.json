@@ -1,0 +1,47 @@
+{
+  "trust_manager": {
+    "alpha": 0.5,
+    "decay_rate": 0.95,
+    "anomaly_threshold": 0.2,
+    "initial_trust": 0.5,
+    "storage_dir": "results/trust_history"
+  },
+  "multi_signal": {
+    "fusion": "weighted_sum",
+    "description": "Master TrustFed_RL-2 §III-E: Ti = Σ wk xk, Σwk=1. Signals V,S,D,U,C,R (R stored as contextual_safety = 1 - risk).",
+    "signal_weights": {
+      "V": 0.25,
+      "S": 0.15,
+      "D": 0.15,
+      "U": 0.15,
+      "C": 0.15,
+      "R": 0.15
+    },
+    "disable_signals": [],
+    "include_R_in_T": true,
+    "include_response_fidelity_in_R": true,
+    "performance_signal": "auto",
+    "performance_signal_iomt": "f1_score",
+    "response_fidelity_window": 10,
+    "legacy_lambda": {
+      "lambda1": 1.0,
+      "lambda2": 0.3,
+      "lambda3": 0.2,
+      "lambda4": 0.2,
+      "lambda5": 0.25,
+      "note": "Retained for CLI overrides / migration only; primary fusion uses signal_weights."
+    }
+  },
+  "consistency": {
+    "window_size": 5
+  },
+  "trend_analysis": {
+    "window_size": 5,
+    "improving_threshold": 0.01,
+    "declining_threshold": -0.01
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "results/trust_updates.log"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "multi_signal": {
+    "lambda1": 1.0,
+    "lambda2": 0.3,
+    "lambda3": 0.2,
+    "lambda4": 0.2,
+    "lambda5": 0.25,
+    "response_fidelity_window": 10,
+    "description": "lambda5: response-fidelity penalty for closed-loop trust. Set lambda5=0 for B5-lambda ablation."
+  }
+}
